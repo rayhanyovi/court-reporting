@@ -127,31 +127,242 @@ The database is **auto-seeded** on first run with:
 
 ## 📸 Screenshots
 
-### Dashboard
-Main analytics view with KPIs, status breakdown, location distribution, and top earners.
+To see the app in action, start both servers and navigate to `http://localhost:5174`. Here's what you'll see:
 
-![Dashboard](docs/screenshots/01-dashboard.png)
+### 1. Dashboard
+**Main analytics view** with 4 KPIs, job status breakdown, location distribution, and top earners.
 
-### Workflow Board
-Kanban-style job management with 5-column status flow, search, and location filter.
+**Layout:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ VoiceScript                           Dashboard  [New Job]   │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Total Jobs  11          In Progress  7                     │
+│  16h 47m recorded        4 completed                        │
+│                                                              │
+│  Completion  36%         Total Payout  Rp 1.3M             │
+│  4 of 11 delivered       Rp 1.700.000 projected            │
+│                                                              │
+│  Jobs by status:                    View board →            │
+│  ████ New (4)                                               │
+│  Assigned (0)                                               │
+│  ███ Transcribed (3)                                        │
+│  Reviewed (0)                                               │
+│  ████ Completed (4)                                         │
+│                                                              │
+│  By location:              Top reporters:                   │
+│   ◐ 11 jobs               Maya Putri — 450k earned        │
+│   [Physical] [Remote]     Reza Firmansyah — 435k earned   │
+│   [Available reporters]                                     │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
 
-![Workflow Board](docs/screenshots/02-board.png)
+**Key elements:**
+- 4 KPI cards (Total Jobs, In Progress, Completion %, Total Payout)
+- Status bar chart (color-coded per state)
+- Location donut chart with legend
+- Top earners tables
 
-### Job Details — Overview
-Slide-out drawer showing job metadata, team assignments, payment breakdown, and activity timeline.
+---
 
-![Job Details](docs/screenshots/03-job-drawer.png)
+### 2. Workflow Board
+**Kanban-style job management** with 5-column status flow, search, and location filter.
 
-### Reporter Picker
-Smart ranking with "Best match" highlight, same-city badges, and availability indicators.
+**Layout:**
+```
+┌──────────────────────────────────────────────────────────────┐
+│ Workflow Board                           [All] [Physical] [Remote] │
+│ Track every case from intake through completion              │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  NEW (4)           ASSIGNED (0)    TRANSCRIBED (3)          │
+│  ┌─────────────┐   No jobs        ┌─────────────┐          │
+│  │ Test Case   │                  │ Pertiwi v.  │          │
+│  │ 45 min Jakarta                 │ Dharma      │          │
+│  │ Unassigned  │                  │ 75 min Remote          │
+│  │ Rp 0        │                  │ With editor │          │
+│  └─────────────┘                  │ Rp 150.000  │          │
+│  │ Remote      │                  └─────────────┘          │
+│  │ Examination │                  │ Labor       │          │
+│  │ 1h Remote                       │ Tribunal    │          │
+│  │ Unassigned                      │ 60 min Bandung        │
+│  │ Rp 0        │                  │ Awaiting editor        │
+│  └─────────────┘                  │ Rp 120.000  │          │
+│  │ Wibowo...   │                  └─────────────┘          │
+│  │ 2h 30m Jakarta                                           │
+│  │ Unassigned                                               │
+│  │ Rp 0        │                                           │
+│  └─────────────┘                                           │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
 
-![Reporter Picker](docs/screenshots/04-reporter-picker.png)
+**Features:**
+- 5 columns: NEW, ASSIGNED, TRANSCRIBED, REVIEWED, COMPLETED
+- Job cards show: case name, duration, location, reporter/editor (avatar), payout
+- Search bar (filter by case name)
+- Location filter: All / Physical / Remote
+- Click any card to open details drawer
 
-### Reporters Table
-Staff view with city, availability, job count, and lifetime earnings.
+---
 
-### Editors Table
-Staff view with flat-fee rate, job count, and lifetime earnings.
+### 3. Job Details Drawer
+**Slide-out panel** showing full job metadata, team assignments, payment breakdown, and activity timeline.
+
+**Layout:**
+```
+┌────────────────────────────────────────────────┐
+│ Test Case — Demo Verification            [×]   │
+├────────────────────────────────────────────────┤
+│ ● New  Job #11 · created 23m ago              │
+│                                                │
+│ Location    Duration                          │
+│ Jakarta     45 min                            │
+│ Created     Review                            │
+│ 02 Jun 09:03  —                              │
+│                                                │
+│ TEAM                                           │
+│ ┌─────────────────────────────────────────┐  │
+│ │ 🎤  No reporter                         │  │
+│ │     Assign to start the workflow        │  │
+│ └─────────────────────────────────────────┘  │
+│ ┌─────────────────────────────────────────┐  │
+│ │ ✏️  No editor                            │  │
+│ │     Assigned after transcription        │  │
+│ └─────────────────────────────────────────┘  │
+│                                                │
+│ PAYMENT BREAKDOWN                              │
+│ 🎤  Reporter              —                   │
+│ ✏️  Editor flat fee      —                    │
+│ 💳  Total payout        Rp 0                  │
+│                                                │
+│ ACTIVITY                                       │
+│ ⊕ Job created                                 │
+│   Job created (physical, 45 min)             │
+│   02 Jun 09:03                               │
+│                                                │
+├────────────────────────────────────────────────┤
+│ [Assign reporter] Pick a reporter...         │
+└────────────────────────────────────────────────┘
+```
+
+---
+
+### 4. Reporter Picker
+**Smart ranking system** with "Best match" highlight, same-city badges, and availability indicators.
+
+**Layout:**
+```
+CHOOSE A REPORTER
+Ranked for Jakarta — same-city & available first.
+
+┌─────────────────────────────────────────────┐
+│ [Best match]                                │ ← Green tab
+│ 🔵 Reza Firmansyah                       →  │
+│    Jakarta · ✓ Available                    │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│ 🟠 Budi Santoso                          →  │
+│    Jakarta · [Same city] · ✗ Busy          │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│ 🟠 Dewi Lestari                          →  │
+│    Jakarta · [Same city] · ✗ Busy          │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│ 🔵 Andi Pratama                          →  │
+│    Surabaya · ✓ Available                   │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│ 🔵 Maya Putri                            →  │
+│    Bandung · ✓ Available                    │
+└─────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│ 🟠 Sari Wijaya                           →  │
+│    Bandung · ✗ Busy                        │
+└─────────────────────────────────────────────┘
+
+[Cancel]
+```
+
+**Features:**
+- Ranked by: availability (✓ Available > ✗ Busy) + location (same city first)
+- Green "Best match" tab for top candidate
+- Blue "Same city" badges for Jakarta reporters
+- Status badges: green (Available) / orange (Busy)
+- Arrow on right (justify-content: space-between)
+
+---
+
+### 5. Reporters Table
+Staff management view with city, availability, job count, and lifetime earnings.
+
+```
+┌────────────────────────────────────────────────────┐
+│ Reporter         City      Availability  Jobs   Earned   │
+├────────────────────────────────────────────────────┤
+│ 🔵 Maya Putri    Bandung   ✓ Available   5 (3)  Rp 450rb │
+│ 🟠 Reza F.       Jakarta   ✓ Available   5 (1)  Rp 435rb │
+│ 🟠 Budi Santoso  Jakarta   ✗ Busy        4      Rp 390rb │
+│ 🟠 Dewi Lestari  Jakarta   ✗ Busy        3 (1)  Rp 255rb │
+│ 🔵 Andi Pratama  Surabaya  ✓ Available   2      Rp 165rb │
+│ 🔵 Sari Wijaya   Bandung   ✗ Busy        1      Rp 120rb │
+└────────────────────────────────────────────────────┘
+```
+
+Sorted by **earned (descending)**, shows job count + active count, availability status.
+
+---
+
+### 6. Editors Table
+Similar staff view for editors with flat-fee rate.
+
+```
+┌────────────────────────────────────────────────────┐
+│ Editor             Flat fee/job   Jobs   Earned    │
+├────────────────────────────────────────────────────┤
+│ 🟣 Tono Marlito   Rp 75.000      2 (1)  Rp 150rb  │
+│ 🔵 Rina Hapsari   Rp 50.000      1      Rp 50rb   │
+│ 🟡 Citra Dewanti  Rp 60.000      1      Rp 60rb   │
+└────────────────────────────────────────────────────┘
+```
+
+Sorted by **earned (descending)**.
+
+---
+
+### How to Capture Your Own Screenshots
+
+After running both servers, take screenshots at these key screens:
+
+1. **Dashboard:** Navigate to `#/dashboard`
+2. **Board:** Navigate to `#/board`
+3. **Job Drawer:** Click any job card on the board
+4. **Reporter Picker:** Click "Assign reporter" button in the drawer
+5. **Reporters:** Navigate to `#/reporters`
+6. **Editors:** Navigate to `#/editors`
+
+Save them as `PNG` in `docs/screenshots/` directory:
+- `01-dashboard.png`
+- `02-board.png`
+- `03-job-drawer.png`
+- `04-reporter-picker.png`
+- `05-reporters.png`
+- `06-editors.png`
+
+Then commit:
+```bash
+git add docs/screenshots/
+git commit -m "docs: add screenshot images"
+git push origin main
+```
 
 ---
 
