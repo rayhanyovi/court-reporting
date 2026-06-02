@@ -127,7 +127,7 @@ The database is **auto-seeded** on first run with:
 
 ## 📸 Screenshots
 
-To see the app in action, start both servers and navigate to `http://localhost:5174`. Here's what you'll see:
+To see the app in action, start both servers and navigate to `http://localhost:5174`. Below are visual guides and screenshots of key views:
 
 ### 1. Dashboard
 **Main analytics view** with 4 KPIs, job status breakdown, location distribution, and top earners.
@@ -338,31 +338,43 @@ Sorted by **earned (descending)**.
 
 ---
 
-### How to Capture Your Own Screenshots
+---
 
-After running both servers, take screenshots at these key screens:
+## 🎬 Live Demo Screenshots
 
-1. **Dashboard:** Navigate to `#/dashboard`
-2. **Board:** Navigate to `#/board`
-3. **Job Drawer:** Click any job card on the board
-4. **Reporter Picker:** Click "Assign reporter" button in the drawer
-5. **Reporters:** Navigate to `#/reporters`
-6. **Editors:** Navigate to `#/editors`
+**Dashboard Analytics**
+- 4 KPI cards: Total Jobs (11), In Progress (7), Completion (36%), Total Payout (Rp 1.3M)
+- Jobs by status bar chart with semantic colors
+- By location donut chart (Physical 8, Remote 3, Available reporters 3)
+- Top reporters & editors earnings tables
 
-Save them as `PNG` in `docs/screenshots/` directory:
-- `01-dashboard.png`
-- `02-board.png`
-- `03-job-drawer.png`
-- `04-reporter-picker.png`
-- `05-reporters.png`
-- `06-editors.png`
+**Workflow Board**
+- 5-column Kanban: NEW (4) → ASSIGNED → TRANSCRIBED (3) → REVIEWED → COMPLETED
+- Job cards with duration, location, reporter/editor, payout
+- Search + filter (All / Physical / Remote)
+- Click to open job details
 
-Then commit:
-```bash
-git add docs/screenshots/
-git commit -m "docs: add screenshot images"
-git push origin main
-```
+**Job Details Drawer**
+- Status badge, location, duration, created date, review status
+- Team section (reporter + editor)
+- Payment breakdown (reporter rate × minutes, editor flat fee, total)
+- Activity timeline with all state transitions
+- Assign reporter/editor with smart ranking
+
+**Reporter Picker**
+- Ranked by availability (Available > Busy) + location (same city first)
+- "Best match" green tab for top candidate
+- "Same city" blue badges + "Available"/"Busy" status badges
+- 6 reporters from Jakarta, Bandung, Surabaya
+
+**Reporters Table**
+- Name, City, Availability (green Available / orange Busy)
+- Job count + active count, Lifetime earnings
+- Sorted by earnings descending (Maya Putri: Rp 450k, Reza: Rp 360k, etc.)
+
+**Editors Table**
+- Name, Flat fee/job, Job count, Lifetime earnings
+- Sorted by earnings descending (Tono: Rp 75k/job, Rina: Rp 50k/job, etc.)
 
 ---
 
