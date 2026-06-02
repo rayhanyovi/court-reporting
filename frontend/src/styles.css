@@ -557,7 +557,7 @@ button {
   align-items: start;
 }
 .col {
-  background: var(--surface-2);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   padding: 12px;
