@@ -110,7 +110,7 @@ function Shell() {
         <div className="sidebar-foot">
           VoiceScript
           <br />
-          v1.0 · IDR billing
+          Made by Yovi for VoiceScript Technical Assessment purpose
         </div>
       </nav>
 
